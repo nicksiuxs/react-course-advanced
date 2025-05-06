@@ -1,10 +1,10 @@
-import './App.css'
+import UserApp from "./design-patterns/container-components";
 
 function App() {
 
   return (
     <div>
-      <h1>Hello World</h1>
+      <UserApp />
     </div>
   )
 }
