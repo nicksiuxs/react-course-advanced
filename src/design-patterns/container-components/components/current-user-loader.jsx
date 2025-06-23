@@ -7,7 +7,7 @@ export const CurrentUserLoader = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get("http://localhost:9090/current-user");
+      const response = await axios.get("/api/current-user");
       setUser(response.data);
     })();
   }, []);
