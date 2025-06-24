@@ -3,6 +3,7 @@ import CurrentUserLoader from "./components/current-user-loader";
 import UserLoader from "./components/user-loader";
 import ResourceLoader from "./components/resource-loader";
 import DataSource from "./components/data-source";
+import DataSourceWithRenderProps from "./components/data-source-with-render-props";
 
 import { UserInfo } from "./components/user-info";
 import { BookInfo } from "./components/book-info";
@@ -44,9 +45,20 @@ const App = () => {
       </>
       <>
         {/* fourth container component (with props) */}
-        <DataSource getData={() => getDataFromServer("/api/users/2")} resourceName="user">
+        {/* <DataSource getData={() => getDataFromServer("/api/users/2")} resourceName="user">
           <UserInfo />
-        </DataSource>
+        </DataSource> */}
+      </>
+      <>
+        {/* fifth container component (with render props) */}
+        <DataSourceWithRenderProps
+          getData={() => getDataFromServer("/api/users/2")}
+          render={(user) => {
+            return <UserInfo user={user} />
+          }}
+        >
+
+        </DataSourceWithRenderProps>
       </>
     </>
   );
