@@ -13,6 +13,14 @@ const getDataFromServer = async (url) => {
   return response.data;
 }
 
+const getDataFromLocalStorage = (key) => () => {
+  return localStorage.getItem(key);
+}
+
+const Message = ({ message }) => {
+  return <div>{message}</div>
+}
+
 const App = () => {
   return (
     <>
@@ -51,14 +59,23 @@ const App = () => {
       </>
       <>
         {/* fifth container component (with render props) */}
-        <DataSourceWithRenderProps
+        {/* <DataSourceWithRenderProps
           getData={() => getDataFromServer("/api/users/2")}
           render={(user) => {
             return <UserInfo user={user} />
           }}
         >
 
-        </DataSourceWithRenderProps>
+        </DataSourceWithRenderProps> */}
+      </>
+      <>
+        {/* sixth container component (with render props) */}
+        <DataSource
+          getData={() => getDataFromLocalStorage("user")}
+          resourceName="message"
+        >
+          <Message />
+        </DataSource>
       </>
     </>
   );
